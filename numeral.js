@@ -127,6 +127,11 @@
             // make sure we never format a null value
             value = value || 0;
 
+             //convert value from small scientific notation to fixed point to work
+            if (value.toString().includes('e-')) {
+                value = value.toFixed(value.toString().split('-')[1]);
+            }
+
             abs = Math.abs(value);
 
             // see if we should use parentheses for negative number or if we should prefix with a sign
